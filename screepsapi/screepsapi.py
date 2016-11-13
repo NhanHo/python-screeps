@@ -66,7 +66,7 @@ class API(object):
     def memory(self, path=''):
         ret = self.get('user/memory', path=path)
         if 'data' in ret:
-            ret['data'] = json.load(gzip.decompress(b64decode(ret['data'][3:])).decode('utf-8'))
+            ret['data'] = json.loads(gzip.decompress(b64decode(ret['data'][3:])).decode('utf-8'))
         return ret
 
     def set_memory(self, path, value):
