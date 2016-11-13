@@ -9,6 +9,7 @@ except ImportError:
     from io import StringIO
 
 from gzip import GzipFile
+import gzip
 import json
 import logging
 import requests
@@ -65,7 +66,7 @@ class API(object):
     def memory(self, path=''):
         ret = self.get('user/memory', path=path)
         if 'data' in ret:
-            ret['data'] = json.load(GzipFile(fileobj=StringIO(b64decode(ret['data'][3:]))))
+            ret['data'] = json.load(gzip.decompress(b64decode(ret['data'][3:])).decode('utf-8'))
         return ret
 
     def set_memory(self, path, value):
