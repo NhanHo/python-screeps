@@ -47,6 +47,15 @@ are the ones listed below.
     - `status` can at least be "normal" or "out of borders"
     - if the room is in a novice area, `novice` will contain the Unix timestamp of the end of the protection (otherwise it is absent)
 
+- `https://screeps.com/api/experimental/pvp?interval=50`
+    - `{ ok, time, rooms: [ { _id, lastPvpTime } ] }`
+    - `time` is the current server tick
+    - `_id` contains the room name for each room, and `lastPvpTime` contains the last tick pvp occurred
+    - if neither a valid `interval` nor a valid `start` argument is provided, the result of the call is still `ok`, but with an empty rooms array.
+
+- `https://screeps.com/api/experimental/pvp?start=14787157`
+    - `{ ok, time, rooms: [ { _id, lastPvpTime } ] }`
+
 # Market information
 
 - `https://screeps.com/api/game/market/orders-index`
@@ -108,6 +117,9 @@ are the ones listed below.
     - `{ ok, _id, email, username, cpu, badge: { type, color1, color2, color3, param, flip }, password, notifyPrefs: { sendOnline, errorsInterval, disabledOnMessages, disabled, interval }, gcl, credits, lastChargeTime, lastTweetTime, github: { id, username }, twitter: { username, followers_count } }`
 
 - `https://screeps.com/api/user/find?username=danny`
+    - `{ ok, user: { _id, username, badge: { type, color1, color2, color3, param, flip }, gcl } }`
+
+- `https://screeps.com/api/user/find?id=55c91dc66e36d62a6167e1b5`
     - `{ ok, user: { _id, username, badge: { type, color1, color2, color3, param, flip }, gcl } }`
 
 - `https://screeps.com/api/user/overview?interval=1440&statName=energyControl`
