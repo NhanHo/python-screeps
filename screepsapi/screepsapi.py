@@ -199,7 +199,7 @@ class Socket(object):
         self.user = user
         self.password = password
         self.ptr = ptr
-        self.logging = False
+        self.logging = logging
 
     def on_error(self, ws, error):
         print (error)
